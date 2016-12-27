@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="mireli" size="200.000000 594.526611" />
+    <ImageTarget name="rkatsiteli" size="500.000000 1786.674072" />
+    <ImageTarget name="wine6" size="300.000000 984.528931" />
+    <ImageTarget name="IMG4" size="600.000000 1375.206665" />
+    <ImageTarget name="IMG3" size="600.000000 1299.323242" />
+  </Tracking>
+</QCARConfig>
