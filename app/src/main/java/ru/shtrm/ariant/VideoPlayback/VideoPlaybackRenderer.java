@@ -63,12 +63,12 @@ public class VideoPlaybackRenderer implements GLSurfaceView.Renderer, SampleAppR
     
     // We cannot use the default texture coordinates of the quad since these
     // will change depending on the video itself
-    //private float videoQuadTextureCoords[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
-    //        1.0f, 0.0f, 1.0f, };
+    private float videoQuadTextureCoords[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+            1.0f, 0.0f, 1.0f, };
     
     // This variable will hold the transformed coordinates (changes every frame)
     private float videoQuadTextureCoords_1[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, };
-    private float videoQuadTextureCoords_2[] = { 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, };
+    private float videoQuadTextureCoords_2[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, };
 
     // Trackable dimensions
     Vec3F targetPositiveDimensions[] = new Vec3F[VideoPlayback.NUM_TARGETS];
@@ -559,7 +559,7 @@ public class VideoPlaybackRenderer implements GLSurfaceView.Renderer, SampleAppR
                     ratio = targetPositiveDimensions[currentTarget].getData()[1]
                         / targetPositiveDimensions[currentTarget].getData()[0];
 
-                Matrix.rotateM(modelViewMatrixKeyframe, 0,180,0,0,-1);
+                //Matrix.rotateM(modelViewMatrixKeyframe, 0,180,0,0,0);
 
                 Matrix.scaleM(modelViewMatrixKeyframe, 0,
                     targetPositiveDimensions[currentTarget].getData()[0],
@@ -623,6 +623,7 @@ public class VideoPlaybackRenderer implements GLSurfaceView.Renderer, SampleAppR
                 // Prepare for rendering the keyframe
                 GLES20.glVertexAttribPointer(videoPlaybackVertexHandle, 3,
                     GLES20.GL_FLOAT, false, 0, quadVertices);
+
 
                 if (imageTarget.getName().compareTo("rkatsiteli") == 0)
                     GLES20.glVertexAttribPointer(videoPlaybackTexCoordHandle,
@@ -829,25 +830,25 @@ public class VideoPlaybackRenderer implements GLSurfaceView.Renderer, SampleAppR
             tempUVMultRes = uvMultMat4f(
                 videoQuadTextureCoords_1[0],
                 videoQuadTextureCoords_1[1],
-                videoQuadTextureCoords_1[0], videoQuadTextureCoords_1[1], mtx);
+                    videoQuadTextureCoords[0], videoQuadTextureCoords[1], mtx);
             videoQuadTextureCoords_1[0] = tempUVMultRes[0];
             videoQuadTextureCoords_1[1] = tempUVMultRes[1];
             tempUVMultRes = uvMultMat4f(
                 videoQuadTextureCoords_1[2],
                 videoQuadTextureCoords_1[3],
-                videoQuadTextureCoords_1[2], videoQuadTextureCoords_1[3], mtx);
+                videoQuadTextureCoords[2], videoQuadTextureCoords[3], mtx);
             videoQuadTextureCoords_1[2] = tempUVMultRes[0];
             videoQuadTextureCoords_1[3] = tempUVMultRes[1];
             tempUVMultRes = uvMultMat4f(
                 videoQuadTextureCoords_1[4],
                 videoQuadTextureCoords_1[5],
-                videoQuadTextureCoords_1[4], videoQuadTextureCoords_1[5], mtx);
+                videoQuadTextureCoords[4], videoQuadTextureCoords[5], mtx);
             videoQuadTextureCoords_1[4] = tempUVMultRes[0];
             videoQuadTextureCoords_1[5] = tempUVMultRes[1];
             tempUVMultRes = uvMultMat4f(
                 videoQuadTextureCoords_1[6],
                 videoQuadTextureCoords_1[7],
-                videoQuadTextureCoords_1[6], videoQuadTextureCoords_1[7], mtx);
+                videoQuadTextureCoords[6], videoQuadTextureCoords[7], mtx);
             videoQuadTextureCoords_1[6] = tempUVMultRes[0];
             videoQuadTextureCoords_1[7] = tempUVMultRes[1];
         } else if (target == VideoPlayback.MIRELI)
@@ -855,25 +856,25 @@ public class VideoPlaybackRenderer implements GLSurfaceView.Renderer, SampleAppR
             tempUVMultRes = uvMultMat4f(
                     videoQuadTextureCoords_2[0],
                     videoQuadTextureCoords_2[1],
-                    videoQuadTextureCoords_2[0], videoQuadTextureCoords_2[1], mtx);
+                    videoQuadTextureCoords[0], videoQuadTextureCoords[1], mtx);
             videoQuadTextureCoords_2[0] = tempUVMultRes[0];
             videoQuadTextureCoords_2[1] = tempUVMultRes[1];
             tempUVMultRes = uvMultMat4f(
                     videoQuadTextureCoords_2[2],
                     videoQuadTextureCoords_2[3],
-                    videoQuadTextureCoords_2[2], videoQuadTextureCoords_2[3], mtx);
+                    videoQuadTextureCoords[2], videoQuadTextureCoords[3], mtx);
             videoQuadTextureCoords_2[2] = tempUVMultRes[0];
             videoQuadTextureCoords_2[3] = tempUVMultRes[1];
             tempUVMultRes = uvMultMat4f(
                     videoQuadTextureCoords_2[4],
                     videoQuadTextureCoords_2[5],
-                    videoQuadTextureCoords_2[4], videoQuadTextureCoords_2[5], mtx);
+                    videoQuadTextureCoords[4], videoQuadTextureCoords[5], mtx);
             videoQuadTextureCoords_2[4] = tempUVMultRes[0];
             videoQuadTextureCoords_2[5] = tempUVMultRes[1];
             tempUVMultRes = uvMultMat4f(
                     videoQuadTextureCoords_2[6],
                     videoQuadTextureCoords_2[7],
-                    videoQuadTextureCoords_2[6], videoQuadTextureCoords_2[7], mtx);
+                    videoQuadTextureCoords[6], videoQuadTextureCoords[7], mtx);
             videoQuadTextureCoords_2[6] = tempUVMultRes[0];
             videoQuadTextureCoords_2[7] = tempUVMultRes[1];
         }
