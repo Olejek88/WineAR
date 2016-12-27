@@ -558,7 +558,9 @@ public class VideoPlaybackRenderer implements GLSurfaceView.Renderer, SampleAppR
                 else
                     ratio = targetPositiveDimensions[currentTarget].getData()[1]
                         / targetPositiveDimensions[currentTarget].getData()[0];
-                
+
+                Matrix.rotateM(modelViewMatrixKeyframe, 0,180,0,0,-1);
+
                 Matrix.scaleM(modelViewMatrixKeyframe, 0,
                     targetPositiveDimensions[currentTarget].getData()[0],
                     targetPositiveDimensions[currentTarget].getData()[0]
